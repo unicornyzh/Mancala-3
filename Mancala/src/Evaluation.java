@@ -32,26 +32,7 @@ class Evaluation {
             return marblesInBSide-marblesInASide;
         }
     }
-
-    int evaluateCapture(BoardState boardState){
-        int couldBeCapturedA=0,couldBeCapturedB=0;
-        for (int i = 1; i <= boardState.PITSNUMBER; i++) {
-            if ((boardState.pitsA[i-1]==0)&&(boardState.pitsB[BoardState.PITSNUMBER-i]!=0)){
-                couldBeCapturedA+=boardState.pitsB[BoardState.PITSNUMBER-1];
-            }
-            if ((boardState.pitsB[i-1]==0)&&(boardState.pitsA[BoardState.PITSNUMBER-i]!=0)){
-                couldBeCapturedB+=boardState.pitsA[BoardState.PITSNUMBER-i];
-            }
-        }
-        if (side==false){
-            return couldBeCapturedA-couldBeCapturedB;
-        }else{
-            return couldBeCapturedB-couldBeCapturedA;
-        }
-    }
     double conclude(BoardState boardState){
-        //return evaluateStore(boardState)*0.999+evaluateCapture(boardState)*0.0005+evaluateCell(boardState)*0.0005;
-        return evaluateStore(boardState)*0.99+evaluateCell(boardState)*0.01;
-        //return evaluateStore(boardState)*0.999+evaluateCapture(boardState)*0.001;
+        return evaluateStore(boardState);//*0.999+evaluateCell(boardState)*0.001;
     }
 }

@@ -14,7 +14,7 @@ class BoardState implements Cloneable {
     BoardState() {
         this.mancalaA = 0;
         this.mancalaB = 0;
-        this.player =true; // player A
+        this.player =false; // player A
         for (int i = 0; i < PITSNUMBER; i++) {
             this.pitsA[i] = 4;
             this.pitsB[i] = 4;
@@ -267,7 +267,7 @@ class BoardState implements Cloneable {
         }
         if (n != 0) {
             if (side == 'a') {
-                if (nextState.pitsA[n - 1] == 0) {
+                if (this.pitsA[n - 1] == 0) {
                     System.out.println("No marbles in this pit");
                     return nextState;
                 }
@@ -286,7 +286,7 @@ class BoardState implements Cloneable {
                 }
             }
             if (side == 'b') {
-                if (nextState.pitsB[n - 1] == 0) {
+                if (this.pitsB[n - 1] == 0) {
                     System.out.println("No marbles in this pit");
                     return nextState;
                 }
